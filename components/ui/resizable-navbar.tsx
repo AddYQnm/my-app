@@ -209,12 +209,22 @@ export const MobileNavMenu = ({
             className,
           )}
         >
+          {/* Bouton pour fermer le menu */}
+          <button
+            onClick={onClose}
+            className="self-end p-2 font-bold text-black dark:text-white"
+            aria-label="Close menu"
+          >
+            Close
+          </button>
+
           {children}
         </motion.div>
       )}
     </AnimatePresence>
   );
 };
+
 
 export const MobileNavToggle = ({
   isOpen,
