@@ -3,20 +3,31 @@
 import React, { useState } from "react";
 import { WobbleCard } from "@/components/ui/wobble-card";
 import Image from "next/image";
-import MarketingDiagram from "@/components/MarketingDiagram"; // Importez ici
-import CyberSecurityDiagram from "@/components/CyberSecurityDiagram"; // Importez ici
+import MarketingDiagram from "@/components/MarketingDiagram";
+import CyberSecurityDiagram from "@/components/CyberSecurityDiagram";
+
+interface ModalContent {
+  title: string;
+  content: string;
+  visual: React.ReactNode;
+}
 
 export function WobbleCardDemo() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({ title: "", content: "", visual: null });
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<ModalContent>({
+    title: "",
+    content: "",
+    visual: null,
+  });
 
-  const handleOpenModal = (title, content, visual) => {
+  const handleOpenModal = (title: string, content: string, visual: React.ReactNode) => {
     setModalContent({ title, content, visual });
     setModalOpen(true);
   };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
+      {/* Card 1: Conception de Site Web */}
       <WobbleCard containerClassName="col-span-1 lg:col-span-2 h-full bg-pink-800 min-h-[500px] lg:min-h-[300px]">
         <div className="max-w-xs">
           <h2 className="text-left text-xl lg:text-3xl font-semibold text-white">
@@ -55,6 +66,7 @@ export function WobbleCardDemo() {
         />
       </WobbleCard>
 
+      {/* Card 2: Marketing Produits */}
       <WobbleCard containerClassName="col-span-1 min-h-[300px]">
         <div className="max-w-xs">
           <h2 className="text-left text-xl lg:text-3xl font-semibold text-white">
@@ -80,6 +92,7 @@ export function WobbleCardDemo() {
         </div>
       </WobbleCard>
 
+      {/* Card 3: Cyber Sécurité */}
       <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-blue-900 min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]">
         <div className="max-w-sm">
           <h2 className="text-left text-xl lg:text-3xl font-semibold text-white">
