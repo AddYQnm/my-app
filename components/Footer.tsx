@@ -39,7 +39,7 @@ export default function ContactSection() {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold">Contact</h2>
           <p className="mt-4 text-lg text-gray-300">
-            Contactez-nous en ligne pour toute demande d'information ou devis. <br className="hidden sm:block" />
+            Contactez-nous en ligne pour toute demande d&apos;information ou devis. <br className="hidden sm:block" />
             Notre équipe vous répondra dans les 24 heures.
           </p>
         </div>
