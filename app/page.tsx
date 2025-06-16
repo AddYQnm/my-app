@@ -14,7 +14,7 @@ import {
   NavbarButton,
   NavbarLogo,
   NavBody,
-  NavItems
+  NavItems,
 } from "@/components/ui/resizable-navbar";
 import ActualitesConseils from "@/components/ActualitesConseils";
 import FaqSection from "@/components/FaqSection";
@@ -26,7 +26,11 @@ import Image from "next/image";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({ title: "", content: "", visual: null });
+  const [modalContent, setModalContent] = useState<{
+    title: string;
+    content: string;
+    visual: React.ReactNode | null;
+  }>({ title: "", content: "", visual: null });
 
   const handleOpenModal = (title: string, content: string, visual: React.ReactNode) => {
     setModalContent({ title, content, visual });
@@ -45,18 +49,16 @@ export default function Home() {
               { name: "Contact", link: "#contact" },
             ]}
           />
-          
           <NavbarButton href="#signup">Programme ton appel</NavbarButton>
         </NavBody>
       </Navbar>
 
-            <MobileNav>
-<MobileNavHeader>
-  <MobileNavMenu/>
-  <MobileNavToggle/>
-</MobileNavHeader>
+      <MobileNav>
+        <MobileNavHeader>
+          <MobileNavMenu />
+          <MobileNavToggle />
+        </MobileNavHeader>
       </MobileNav>
-
 
       <main>
         <HeroSectionOne />
@@ -81,7 +83,13 @@ export default function Home() {
                       handleOpenModal(
                         "Conception de Site Web",
                         "Nous créons des sites web performants, esthétiques et adaptés à vos objectifs. Chaque projet est conçu avec soin pour refléter votre identité visuelle et vos valeurs.",
-                        <img src="/web-design.svg" alt="web design" className="w-64 h-auto" />
+                        <Image
+                          src="/web-design.svg"
+                          alt="web design"
+                          width={256}
+                          height={256}
+                          className="w-64 h-auto"
+                        />
                       )
                     }
                     className="z-10 relative bg-white text-black text-sm font-semibold py-2 px-4 rounded-xl hover:bg-gray-200 transition"
@@ -171,19 +179,18 @@ export default function Home() {
           </h1>
 
           <div className="w-full flex justify-center items-center my-12">
-           <InfiniteMovingCards
-  items={[
-    { quote: "Une vitesse fulgurante avec Gippity AI !", name: "Jean Dupont", title: "CTO chez AI Corp" },
-    { quote: "C’est comme de la magie, mais réelle !", name: "Claire Martin", title: "Cheffe de produit chez MagicTech" },
-    { quote: "Gippity transforme notre manière de travailler au quotidien.", name: "Luc Moreau", title: "Directeur Innovation chez FutureWorks" },
-    { quote: "Simple, rapide, et incroyablement puissant.", name: "Émilie Laurent", title: "Ingénieure IA chez NovaLab" },
-    { quote: "Un outil indispensable pour notre équipe tech.", name: "Marc Lefèvre", title: "Responsable technique chez CodeFusion" },
-    { quote: "L’intelligence artificielle à son meilleur niveau.", name: "Sophie Bertrand", title: "CEO de VisionNext" },
-  ]}
-  direction="right"
-  speed="slow"
-/>
-
+            <InfiniteMovingCards
+              items={[
+                { quote: "Une vitesse fulgurante avec Gippity AI !", name: "Jean Dupont", title: "CTO chez AI Corp" },
+                { quote: "C’est comme de la magie, mais réelle !", name: "Claire Martin", title: "Cheffe de produit chez MagicTech" },
+                { quote: "Gippity transforme notre manière de travailler au quotidien.", name: "Luc Moreau", title: "Directeur Innovation chez FutureWorks" },
+                { quote: "Simple, rapide, et incroyablement puissant.", name: "Émilie Laurent", title: "Ingénieure IA chez NovaLab" },
+                { quote: "Un outil indispensable pour notre équipe tech.", name: "Marc Lefèvre", title: "Responsable technique chez CodeFusion" },
+                { quote: "L’intelligence artificielle à son meilleur niveau.", name: "Sophie Bertrand", title: "CEO de VisionNext" },
+              ]}
+              direction="right"
+              speed="slow"
+            />
           </div>
         </div>
 
