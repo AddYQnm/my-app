@@ -25,6 +25,9 @@ import MarketingDiagram from "@/components/MarketingDiagram";
 import Image from "next/image";
 
 export default function Home() {
+  // Ajout du state pour le menu mobile
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState<{
     title: string;
@@ -49,14 +52,31 @@ export default function Home() {
               { name: "Contact", link: "#contact" },
             ]}
           />
-          <NavbarButton href="#signup">Programme ton appel</NavbarButton>
+          <NavbarButton href="#">Programme ton appel</NavbarButton>
         </NavBody>
       </Navbar>
 
+      {/* Menu Mobile */}
       <MobileNav>
         <MobileNavHeader>
-          <MobileNavMenu />
-          <MobileNavToggle />
+          <MobileNavToggle isOpen={menuOpen} onClick={() => setMenuOpen(!menuOpen)} />
+
+          <MobileNavMenu
+            isOpen={menuOpen}
+            onClose={() => setMenuOpen(false)}
+          >
+            <ul className="space-y-4">
+              <li>
+                <a href="#accueil" className="text-black dark:text-white">Accueil</a>
+              </li>
+              <li>
+                <a href="#services" className="text-black dark:text-white">Services</a>
+              </li>
+              <li>
+                <a href="#contact" className="text-black dark:text-white">Contact</a>
+              </li>
+            </ul>
+          </MobileNavMenu>
         </MobileNavHeader>
       </MobileNav>
 
