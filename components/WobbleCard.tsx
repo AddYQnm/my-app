@@ -12,13 +12,15 @@ interface ModalContent {
   visual: React.ReactNode;
 }
 
-export function WobbleCardDemo() {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const [modalContent, setModalContent] = useState<ModalContent>({
-    title: "",
-    content: "",
-    visual: null,
-  });
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const [modalOpen, setModalOpen] = useState(false);
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const [modalContent, setModalContent] = useState<{
+  title: string;
+  content: string;
+  visual: React.ReactNode;
+} | null>(null);
+
 
   const handleOpenModal = (title: string, content: string, visual: React.ReactNode) => {
     setModalContent({ title, content, visual });
